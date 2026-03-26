@@ -8,10 +8,12 @@ class ProductController extends Controller
 {
 public function index()
 {
-$products = Product::query()
-->latest()
-->paginate(10);
-return ProductResource::collection($products);
+    $products = Product::all();
+    return view('productos', compact('products'));
+// $products = Product::query()
+// ->latest()
+// ->paginate(10);
+// return ProductResource::collection($products);
 }
 public function store(StoreProductRequest $request)
 {
